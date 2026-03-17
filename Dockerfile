@@ -2,8 +2,11 @@ FROM eclipse-temurin:21-jre-alpine
 RUN apk add --no-cache curl
 WORKDIR /app
 
-RUN curl -L -o otp.jar https://github.com/jonatanjk/otp/releases/download/v1.0/otp.jar
-RUN mkdir -p graphs/london && curl -L -o graphs/london/graph.obj https://github.com/jonatanjk/otp/releases/download/v1.0/graph.obj
+ARG GITHUB_TOKEN
+RUN curl -L -H "Authorization: token ${GITHUB_TOKEN}" -H "Accept: application/octet-stream" \
+    -o otp.jar https://api.github.com/repos/jonatanjk/otp/releases/assets/375938070
+RUN mkdir -p graphs/london && curl -L -H "Authorization: token ${GITHUB_TOKEN}" -H "Accept: application/octet-stream" \
+    -o graphs/london/graph.obj https://api.github.com/repos/jonatanjk/otp/releases/assets/375938069
 
 COPY graphs/london/router-config.json graphs/london/
 COPY graphs/london/otp-config.json graphs/london/
