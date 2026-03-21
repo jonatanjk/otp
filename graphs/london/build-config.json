@@ -1,4 +1,4 @@
 {
-  "transitServiceStart": "-P1M",
-  "transitServiceEnd": "P3M"
+  "transitServiceStart": "-P1D",
+  "transitServiceEnd": "P7D"
 }

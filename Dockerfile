@@ -10,4 +10,4 @@ COPY graphs/london/otp-config.json graphs/london/
 COPY graphs/london/build-config.json graphs/london/
 
 EXPOSE 8080
-CMD ["java", "-Xmx4g", "-jar", "otp.jar", "--load", "graphs/london", "--serve"]
+CMD ["java", "-Xmx2g", "-XX:+UseContainerSupport", "-jar", "otp.jar", "--load", "graphs/london", "--serve"]
